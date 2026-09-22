@@ -1,0 +1,365 @@
+http:
+  pprof:
+    port: 6060
+    enabled: false
+  doh:
+    routes:
+      - GET /dns-query
+      - POST /dns-query
+      - GET /dns-query/{ClientID}
+      - POST /dns-query/{ClientID}
+    insecure_enabled: false
+  address: 192.168.168.250:8081
+  session_ttl: 30d
+users:
+  - name: xaadmin
+    password: 2a$10$zhNpu4y81mWX1KPM03J88OspCNSJ8kDbhqFltoaWFOQHsTaRyY3
+auth_attempts: 5
+block_auth_min: 15
+http_proxy: ""
+language: ""
+theme: auto
+dns:
+  bind_hosts:
+    - 127.0.0.1
+    - 192.168.168.250
+  port: 531
+  anonymize_client_ip: false
+  ratelimit: 20
+  ratelimit_subnet_len_ipv4: 24
+  ratelimit_subnet_len_ipv6: 56
+  ratelimit_whitelist: []
+  refuse_any: true
+  upstream_dns:
+    - https://d.adguard-dns.com/dns-query/6c6e8e49
+    - tls://6c6e8e49.d.adguard-dns.com
+    - quic://6c6e8e49.d.adguard-dns.com
+  upstream_dns_file: ""
+  bootstrap_dns:
+    - 2a10:50c0:c000::6c6e:8e49
+    - 2a10:50c0:c000::1:6c6e:8e49
+    - 9.9.9.10
+    - 149.112.112.10
+    - 2620:fe::10
+    - 2620:fe::fe:10
+  fallback_dns: []
+  upstream_mode: fastest_addr
+  fastest_timeout: 1s
+  allowed_clients: []
+  disallowed_clients: []
+  blocked_hosts:
+    - version.bind
+    - id.server
+    - hostname.bind
+  trusted_proxies:
+    - 127.0.0.0/8
+    - ::1/128
+  cache_enabled: true
+  cache_size: 4194304
+  cache_ttl_min: 0
+  cache_ttl_max: 0
+  cache_optimistic: false
+  cache_optimistic_answer_ttl: 30s
+  cache_optimistic_max_age: 12h
+  bogus_nxdomain: []
+  aaaa_disabled: false
+  enable_dnssec: false
+  edns_client_subnet:
+    custom_ip: ""
+    enabled: false
+    use_custom: false
+  max_goroutines: 300
+  handle_ddr: true
+  ipset: []
+  ipset_file: ""
+  bootstrap_prefer_ipv6: false
+  upstream_timeout: 10s
+  private_networks: []
+  use_private_ptr_resolvers: true
+  local_ptr_upstreams: []
+  use_dns64: false
+  dns64_prefixes: []
+  serve_http3: false
+  use_http3_upstreams: false
+  serve_plain_dns: true
+  hostsfile_enabled: true
+  pending_requests:
+    enabled: true
+tls:
+  enabled: false
+  server_name: ""
+  force_https: false
+  port_https: 443
+  port_dns_over_tls: 853
+  port_dns_over_quic: 853
+  port_dnscrypt: 0
+  dnscrypt_config_file: ""
+  certificate_chain: ""
+  private_key: ""
+  certificate_path: ""
+  private_key_path: ""
+  strict_sni_check: false
+querylog:
+  dir_path: ""
+  ignored: []
+  interval: 90d
+  size_memory: 1000
+  enabled: true
+  ignored_enabled: false
+  file_enabled: true
+statistics:
+  dir_path: ""
+  ignored: []
+  interval: 1d
+  enabled: true
+  ignored_enabled: false
+filters:
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt
+    name: AdGuard DNS filter
+    id: 1
+  - enabled: false
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_2.txt
+    name: AdAway Default Blocklist
+    id: 2
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_11.txt
+    name: Malicious URL Blocklist (URLHaus)
+    id: 1704898924
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_22.txt
+    name: 'IDN: ABPindo'
+    id: 1704898925
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_12.txt
+    name: Dandelion Sprout's Anti-Malware List
+    id: 1704898926
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_10.txt
+    name: Scam Blocklist by DurableNapkin
+    id: 1704898927
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_33.txt
+    name: Steven Black's List
+    id: 1704898928
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_18.txt
+    name: Phishing Army
+    id: 1704898929
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_30.txt
+    name: Phishing URL Blocklist (PhishTank and OpenPhish)
+    id: 1704898930
+  - enabled: false
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_50.txt
+    name: uBlock₀ filters – Badware risks
+    id: 1704898931
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt
+    name: The Big List of Hacked Malware Web Sites
+    id: 1704898932
+  - enabled: true
+    url: https://raw.githubusercontent.com/aanset/pihole/master/blacklist.txt
+    name: aanset
+    id: 1767887842
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_44.txt
+    name: HaGeZi's Threat Intelligence Feeds
+    id: 1767887843
+whitelist_filters: []
+user_rules:
+  - '@@||sf-teko-source.tiktokcdn.com^$important'
+  - '@@||tokopedia-static.net^$important'
+  - '@@||gecko-sg.tiktokv.com^$important'
+  - '@@||api-mobile.soundcloud.com^$important'
+  - '@@||events-api.soundcloud.com^$important'
+  - '@@||secure.soundcloud.com^$important'
+  - '@@||telemetry.soundcloud.com^$important'
+  - '@@||secure.sndcdn.com^$important'
+  - '@@||api-auth.soundcloud.com^$important'
+  - '@@||trk.pinterest.com^$important'
+  - '@@||api.pinterest.com^$important'
+  - '@@||i.pinimg.com^$important'
+  - '@@||pitaya.tiktokv.com^$important'
+  - '@@||mssdk-sg.byteoversea.com^$important'
+  - '@@||abtest-sg.byteoversea.com^$important'
+  - '@@||i.byteoversea.com^$important'
+  - '@@||frontier.byteoversea.com^$important'
+  - '@@||rtapplog.tiktokv.com^$important'
+  - '@@||client-uc.heytapmobi.com^$important'
+  - '@@||a32dl55qcodech-ats.iot.eu-west-1.amazonaws.com^$important'
+  - ""
+dhcp:
+  enabled: false
+  interface_name: ""
+  local_domain_name: lan
+  dhcpv4:
+    gateway_ip: ""
+    subnet_mask: ""
+    range_start: ""
+    range_end: ""
+    lease_duration: 86400
+    icmp_timeout_msec: 1000
+    options: []
+  dhcpv6:
+    range_start: ""
+    lease_duration: 86400
+    ra_slaac_only: false
+    ra_allow_slaac: false
+filtering:
+  blocking_ipv4: ""
+  blocking_ipv6: ""
+  blocked_services:
+    schedule:
+      time_zone: Local
+    ids:
+      - 4chan
+      - 500px
+      - 9gag
+      - activision_blizzard
+      - aliexpress
+      - amazon
+      - amazon_streaming
+      - amino
+      - apple_streaming
+      - battle_net
+      - betano
+      - betfair
+      - betway
+      - bigo_live
+      - bilibili
+      - blaze
+      - blizzard_entertainment
+      - bluesky
+      - canais_globo
+      - claro
+      - clubhouse
+      - coolapk
+      - crunchyroll
+      - deepseek
+      - deezer
+      - directvgo
+      - discord
+      - discoveryplus
+      - disneyplus
+      - douban
+      - ebay
+      - electronic_arts
+      - epic_games
+      - espn
+      - fifa
+      - flickr
+      - globoplay
+      - gog
+      - hbomax
+      - hulu
+      - icloud_private_relay
+      - iheartradio
+      - imgur
+      - iqiyi
+      - kakaotalk
+      - kik
+      - kook
+      - lazada
+      - leagueoflegends
+      - line
+      - lionsgateplus
+      - looke
+      - mail_ru
+      - mercado_libre
+      - minecraft
+      - nebula
+      - netflix
+      - nintendo
+      - nvidia
+      - odysee
+      - ok
+      - olvid
+      - onlyfans
+      - origin
+      - paramountplus
+      - playstation
+      - plenty_of_fish
+      - plex
+      - pluto_tv
+      - privacy
+      - qq
+      - rakuten_viki
+      - riot_games
+      - rockstar_games
+      - shein
+      - shopee
+      - skype
+      - snapchat
+      - spotify
+      - spotify_video
+      - steam
+      - temu
+      - tidal
+      - tinder
+      - tumblr
+      - twitch
+      - twitter
+      - ubisoft
+      - valorant
+      - viber
+      - vk
+      - voot
+      - wargaming
+      - wechat
+      - weibo
+      - wizz
+      - xboxlive
+      - xiaohongshu
+      - yy
+      - zhihu
+  protection_disabled_until: null
+  safe_search:
+    enabled: false
+    bing: true
+    duckduckgo: true
+    ecosia: true
+    google: true
+    pixabay: true
+    yandex: true
+    youtube: true
+  blocking_mode: default
+  parental_block_host: family-block.dns.adguard.com
+  safebrowsing_block_host: standard-block.dns.adguard.com
+  rewrites: []
+  safe_fs_patterns:
+    - /opt/AdGuardHome/data/userfilters/*
+  max_http_size: 256MB
+  safebrowsing_cache_size: 1048576
+  safesearch_cache_size: 1048576
+  parental_cache_size: 1048576
+  cache_time: 30
+  filters_update_interval: 24
+  blocked_response_ttl: 10
+  filtering_enabled: true
+  rewrites_enabled: true
+  parental_enabled: false
+  safebrowsing_enabled: false
+  protection_enabled: true
+clients:
+  runtime_sources:
+    whois: true
+    arp: true
+    rdns: true
+    dhcp: true
+    hosts: true
+  persistent: []
+log:
+  enabled: true
+  file: ""
+  max_backups: 0
+  max_size: 100
+  max_age: 3
+  compress: false
+  local_time: false
+  verbose: false
+os:
+  group: ""
+  user: ""
+  rlimit_nofile: 0
+schema_version: 34
