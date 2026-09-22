@@ -31,9 +31,9 @@ dns:
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
-    - https://d.adguard-dns.com/dns-query/6c6e8e49
-    - tls://6c6e8e49.d.adguard-dns.com
-    - quic://6c6e8e49.d.adguard-dns.com
+    - https://d.adguard-dns.com/dns-query/6c6e8e4
+    - tls://6c6e8e4.d.adguard-dns.com
+    - quic://6c6e8e4.d.adguard-dns.com
   upstream_dns_file: ""
   bootstrap_dns:
     - 2a10:50c0:c000::6c6e:8e49
