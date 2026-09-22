@@ -1,0 +1,8 @@
+0       6       *       *       *       curl https://link-ip.nextdns.io/f611/42f86ee5efb7e9f2
+0       6       *       *       *       curl https://linkip.adguard-dns.com/linkip/c6e8e4/XaKsJWdYYrDoNI8fD8oyjBgphlAt8dYJEzodqjSVei9
+0       22      *       *       *       sudo shutdown -h now
+0       23      *       *       *       sudo shutdown -h now
+0       1       *       *       *       sudo shutdown -h now
+0       */5     *       *       *       rpi-connect on
+0       0       *       *       1       sudo apt update && sudo apt upgrade -y
+0       0       *       *       0       sudo pihole -up
